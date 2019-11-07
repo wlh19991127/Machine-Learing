@@ -114,8 +114,4 @@ def run(lamda=0,power=1):
     
 if __name__=='__main__':
     run(lamda=1,power=6)
-    
-    
-if __name__=='__main__':
-    run(lamda=1,power=6)
 
