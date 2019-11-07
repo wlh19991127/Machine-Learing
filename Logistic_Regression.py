@@ -4,6 +4,9 @@
 author:wlh19991127
 机器学习算法2：逻辑回归 
 包含正则化、特征映射
+在使用时：1.需要指定读取文件的路径
+         2.需要在run()函数中指定是否正则化以及正则化系数（不指定参数默认为不正则化）、特征映射的最高次幂(不指定默认为一次即决策边界是一条直线)
+         3.需要在决策边界函数中根据数据集的范围指定绘制等高线的范围
 
 '''
 
@@ -88,12 +91,12 @@ def decision_boundary(theta,power):
 #运行
 def run(lamda=0,power=1):
     x,y=read_txt('C:/Users/wang/Desktop/机器学习编程/machine-learning-ex2/ex2/ex2data2.txt',',')
-    m=len(y) #数据的条数 100
+    m=len(y) #数据的条数 
     y=y.reshape((m,1))
     plot_scatt(x,y) #画出散点图
     X=np.hstack((np.ones((m,1)),x)) #X矩阵
     X=feathure_map(X[:,1],X[:,2],power)
-    args=X.shape[1] #特征值的数量 2
+    args=X.shape[1] #特征值的数量 
     theta=np.zeros((args,1))
     cost_start=calculate_cost(theta,X,y)
     print("初始代价函数的值为",cost_start)
@@ -113,5 +116,5 @@ def run(lamda=0,power=1):
     predict(pred_x,result,power)
     
 if __name__=='__main__':
-    run(lamda=1,power=6)
+    run(lamda=0,power=1)
 
